@@ -14,20 +14,27 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('detail/{id}',function ($id){
-    return $id;
-});
+Route::get('/','HomeController@index')->name('home');
 
-Route::resource('test','TestController');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('users',function (){
-    $response = Http::get('http://google.com');
- ddd($response->json());
-});
+Route::get('/admin',function(){
+    return view('admin.dashboard');
+})->name('dashboard');
+
+Route::get('demand/{demand}/status/{status}','admin\DemandsController@status')->name('demand.status');
+Route::resource('demand','admin\DemandsController')->except('destroy');
+Route::resource('language','admin\LanguagesController');
+
+
+
+
+
+
+
+
+

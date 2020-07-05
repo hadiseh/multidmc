@@ -26,3 +26,47 @@
     </div>
 </div>
 @endsection
+@include('layout.header')
+<style>
+    body{
+        padding-top: 0;
+    }
+</style>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+
+
+                <span class="login100-form-title p-b-55">
+					{{ __('Verify Your Email Address') }}
+					</span>
+            @if (session('resent'))
+                <div class="alert alert-success" role="alert">
+                    {{ __('A fresh verification link has been sent to your email address.') }}
+                </div>
+            @endif
+
+            {{ __('Before proceeding, please check your email for a verification link.') }}
+            {{ __('If you did not receive the email') }},
+
+            <form class="login100-form validate-form" method="POST" action="{{ route('verification.resend') }}">
+                @csrf
+                <div class="container-login100-form-btn p-t-25">
+                    <button class="login100-form-btn" type="submit">
+                        {{ __('click here to request another') }}
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+@include('layout.footer')
+

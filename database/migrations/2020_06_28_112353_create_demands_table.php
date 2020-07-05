@@ -19,10 +19,12 @@ class CreateDemandsTable extends Migration
             $table->string('email');
             $table->string('name')->nullable();
             $table->string('website')->nullable();
-            $table->string('telegramId')->nullable();
-            $table->string('whatsAppAccount')->nullable();
+            $table->string('telegram_id')->nullable();
+            $table->string('whats_app_account')->nullable();
             $table->string('address')->nullable();
+            $table->string('telephone_code');
             $table->string('telephone');
+            $table->string('phone_code')->nullable();
             $table->string('phone')->nullable();
             $table->unsignedBigInteger('language_id');
             $table->string('logo')->nullable();
